@@ -19,42 +19,57 @@
 # ○ Mostrar un resumen con el nombre del visitante, la lista de atracciones que eligió, cuáles pudo
 # usar y el costo total a pagar.
 
+print("Bienvenido al Parque PythonLand 🎢")
+
 nombre = input("Ingrese su nombre: ")
 edad = int(input("Ingrese su edad: "))
-pregunta = int(input("Cuantas atracciones desear usar? (Hay 3): "))
-atracciones = input("Ingrese el tipo de atraccion que quiere usar! (Montaña Rusa, Casa del Terror y Carrusel): ")
+pregunta = int(input("¿Cuántas atracciones desea usar? (máx. 3): "))
 
 costo_entradas = 0
+lista_atracciones = ""   
+
 for i in range(pregunta):
-    while True:
-        if edad >= 12:
-            # atracciones = input("Ingrese el tipo de atraccion que quiere usar! (Montaña Rusa, Casa del Terror y Carrusel): ")
-            if atracciones == "Montaña":
-                costo_entradas += 1500
-            elif atracciones == "Casa del Terror":
-                costo_entradas += 1200
-            else:
-                costo_entradas += 800
-            break
-        elif edad >= 0 and edad <= 6:
-                # atracciones = input("Ingrese el tipo de atraccion que quiere usar! (Montaña Rusa, Casa del Terror y Carrusel): ")
-                print("Solo podes subirte al Carrusel")
-                while atracciones != "Carrusel":
-                    costo_entradas += 800
-        elif edad > 7:
-                # atracciones = input("Ingrese el tipo de atraccion que quiere usar! ( Casa del Terror y Carrusel): ")
-                print("Podes Subir al Carrusel, y Casa del Terror!")
-                while atracciones != "Casa del Terror" or atracciones != "Carrusel":
-                    if atracciones == "Casa del Terror":
-                        costo_entradas += 1200
-                    elif atracciones == "Carrusel":
-                        costo_entradas += 800
-    print("----------Factura----------")
-    print(f"Nombre: {nombre}")
-    print(f"Edad: {edad}")
-    print(f"Cantidad de atracciones: {pregunta}")
-    print(f"Tipo de Atraccion: {atracciones}")
-    print(f"Subtotal: {costo_entradas}")
+    atraccion = input("Ingrese el tipo de atracción (Montaña Rusa / Casa del Terror / Carrusel): ")
+
+    if edad >= 12:
+        if atraccion == "Montaña Rusa":
+            costo_entradas += 1500
+            lista_atracciones += "Montaña Rusa ✅\n"
+        elif atraccion == "Casa del Terror":
+            costo_entradas += 1200
+            lista_atracciones += "Casa del Terror ✅\n"
+        elif atraccion == "Carrusel":
+            costo_entradas += 800
+            lista_atracciones += "Carrusel ✅\n"
+
+    elif edad < 6:
+        if atraccion != "Carrusel":
+            print("⚠️ Solo podés subirte al Carrusel.")
+            lista_atracciones += atraccion + " ❌\n"
+        else:
+            costo_entradas += 800
+            lista_atracciones += "Carrusel ✅\n"
+
+    else:
+        if atraccion == "Casa del Terror":
+            costo_entradas += 1200
+            lista_atracciones += "Casa del Terror ✅\n"
+        elif atraccion == "Carrusel":
+            costo_entradas += 800
+            lista_atracciones += "Carrusel ✅\n"
+        else:
+            print("⚠️ No podés subirte a la Montaña Rusa.")
+            lista_atracciones += "Montaña Rusa ❌\n"
+
+print("------------ Factura ------------")
+print(f"Nombre: {nombre}")
+print(f"Edad: {edad}")
+print("Atracciones elegidas:")
+print(lista_atracciones)
+print(f"Subtotal: ${costo_entradas}")
+print("Que disfrute de las atracciones!")
+print("---------------------------------")
+
 
 
 # if atracciones == "Montaña":
