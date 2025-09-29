@@ -1,6 +1,6 @@
 MAX = 10
 lista_nombres = [""] * MAX
-lista_puntajes = [0] * MAX
+lista_libros_leidos = [0] * MAX
 lista_comentarios = [""] * MAX
 
 
@@ -22,11 +22,11 @@ def puntaje(mensaje):
             return numero
 
 
-def ingresar_datos(nombres, puntajes, comentarios, cantidad):
+def ingresar_datos(nombres, libros, comentarios, cantidad):
     while cantidad < MAX:
-        print(f"------ Participante {nombres + 1} ------")
+        print(f"------ Participante {cantidad + 1} ------")
         nombres[cantidad] = texto("Ingrese nombre: ")
-        puntajes[cantidad] = puntaje("Ingrese puntuación (1-20): ")
+        libros[cantidad] = puntaje("Ingrese puntuación (1-20): ")
         comentarios[cantidad] = texto("Ingrese comentario: ")
         cantidad += 1
         continuar = input("Desea continuar cargando personas? (s/n)").lower()
@@ -35,27 +35,27 @@ def ingresar_datos(nombres, puntajes, comentarios, cantidad):
     return cantidad
 
 
-def mostrar_datos(nombres, puntajes, comentarios, cantidad):
+def mostrar_datos(nombres, libros, comentarios, cantidad):
     if cantidad == 0:
         print("No hay datos cargados...")
         return
     suma = 0
     for i in range(cantidad):
-        print(f"{i + 1}. {nombres[i]} - Puntaje: {puntajes[i]} - Comentario: {comentarios[i]}")
-        suma += puntajes[i]
+        print(f"{i + 1}. {nombres[i]} - Puntaje: {libros[i]} - Comentario: {comentarios[i]}")
+        suma += libros[i]
     promedio = suma / cantidad
     print(f"Promedio de puntaje total: {promedio}")
 
 
-def ordenar_por_puntaje(nombres, puntajes, comentarios, cantidad):
+def ordenar(nombres, libros, comentarios, cantidad):
     for i in range(cantidad - 1):
         for j in range(cantidad - 1 - i):
-            if puntajes[j] < puntajes[j + 1]:
-                puntajes[j], puntajes[j + 1] = puntajes[j + 1], puntajes[j]
+            if libros[j] < libros[j + 1]:
+                libros[j], libros[j + 1] = libros[j + 1], libros[j]
                 nombres[j], nombres[j + 1] = nombres[j + 1], nombres[j]
                 comentarios[j], comentarios[j + 1] = comentarios[j + 1], comentarios[j]
     for i in range(cantidad):
-        print(f"{i + 1}. {nombres[i]} - Puntaje: {puntajes[i]} - Comentario: {comentarios[i]}")
+        print(f"{i + 1}. {nombres[i]} - Puntaje: {libros[i]} - Comentario: {comentarios[i]}")
 
 
 cantidad = 0
@@ -68,11 +68,11 @@ while True:
     print("4. Salir")
     opcion = input("Seleccione una opción: ")
     if opcion == "1":
-        cantidad = ingresar_datos(lista_nombres, lista_puntajes, lista_comentarios, cantidad)
+        cantidad = ingresar_datos(lista_nombres, lista_libros_leidos, lista_comentarios, cantidad)
     elif opcion == "2":
-        mostrar_datos(lista_nombres, lista_puntajes, lista_comentarios, cantidad)
+        mostrar_datos(lista_nombres, lista_libros_leidos, lista_comentarios, cantidad)
     elif opcion == "3":
-        ordenar_por_puntaje(lista_nombres, lista_puntajes, lista_comentarios, cantidad)
+        ordenar(lista_nombres, lista_libros_leidos, lista_comentarios, cantidad)
     elif opcion == "4":
         print("Gracias por participar en la encuesta )")
         break
