@@ -1,4 +1,3 @@
-# funciones_archivos.py
 import json
 import csv
 import os
