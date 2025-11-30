@@ -1,0 +1,33 @@
+[
+  {
+    "nombre_nivel": "Final en el Estadio",
+    "caras_dado": [
+      "Arquero",
+      "Defensor",
+      "Mediocampista",
+      "Delantero",
+      "Hincha",
+      "Pelota"
+    ],
+    "categorias": {
+      "unos": "Arqueros (1)",
+      "doses": "Defensores (2)",
+      "treses": "Mediocampistas (3)",
+      "cuatros": "Delanteros (4)",
+      "cincos": "Hinchas (5)",
+      "seises": "Pelotas (6)",
+      "escalera": "Contraataque Perfecto (Escalera)",
+      "full": "Tribuna Llena (Full)",
+      "poker": "Póker de Goles",
+      "generala": "Final del Mundial (Generala)"
+    },
+    "puntos_especiales": {
+      "escalera": 20,
+      "full": 30,
+      "poker": 40,
+      "generala": 50,
+      "generala_servida": 100
+    },
+    "puntaje_objetivo": 100
+  }
+]
